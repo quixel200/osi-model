@@ -63,6 +63,33 @@ I will be sending a test email to myself on localhost using the SMTP protocol. S
 
 `nc localhost 25`
 
+```
+[quix@quixel osi-model]$ nc localhost 25
+220 quixel.localdomain ESMTP Postfix
+HELO localhost
+250 quixel.localdomain
+MAIL FROM:<me@localhost> 
+250 2.1.0 Ok
+RCPT TO:<quix@localhost>
+250 2.1.5 Ok
+DATA
+354 End data with <CR><LF>.<CR><LF>
+subject: test mail
+
+This is a test mail to demonstrate the OSI model
+.
+250 2.0.0 Ok: queued as 406BF140A8C
+QUIT
+221 2.0.0 Bye
+```
 
 
+
+- **HELO/EHLO** - initiates the SMTP session. 
+- **MAIL FROM** - senders email address 
+- **RCPT TO** - receivers mail 
+- **DATA** - start of the email message body, end with a `.`
+- **QUIT** - end the SMTP session
+
+Mails are usually stored in `/var/spool/mail/<username>`
 
